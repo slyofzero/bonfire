@@ -130,7 +130,8 @@ export default function Home() {
               <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
                 <div className="text-lg lg:text-xl">Token Name</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  {token.baseTokenData.name} (${token.baseTokenData.symbol})
+                  {/* {token.baseTokenData.name} (${token.baseTokenData.symbol}) */}
+                  Test
                 </div>
               </div>
               <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
@@ -193,8 +194,7 @@ export default function Home() {
             <div className="bg-[linear-gradient(180deg,#FDA50F_0%,#F76A24_100%)] p-6 text-center uppercase rounded-lg">
               <div className="text-lg lg:text-2xl">Total Burned</div>
               <div className="text-xl lg:text-3xl font-bold mt-2 lg:mt-3">
-                {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))}{" "}
-                BONFIRE
+                {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))} Test
               </div>
             </div>
             <div className="bg-[linear-gradient(180deg,#FDA50F_0%,#F76A24_100%)] p-6 text-center uppercase rounded-lg">
@@ -211,7 +211,7 @@ export default function Home() {
               <div className="text-lg lg:text-2xl">Your Balance</div>
               <div className="text-xl lg:text-3xl font-bold mt-1 lg:mt-3">
                 {" "}
-                {nFormatter(balance?.displayValue)} BONFIRE
+                {nFormatter(balance?.displayValue)} Test
               </div>
             </div>
           </div>
