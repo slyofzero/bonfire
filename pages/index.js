@@ -109,95 +109,97 @@ export default function Home() {
     }
   }, [amount, balance]);
   return (
-    <main className={` ${inter.className} `}>
+    <main className={` ${inter.className}`}>
       <Toaster />
       <img
-        src="/bg.png"
-        className="fixed object-cover object-top h-full w-full inset-0 z-[-1]"
+        src="/bg.jpg"
+        className="fixed object-cover object-top h-full w-full inset-0 z-[-1] brightness-[55%]"
       />
       <header>
         <div className="container mx-auto px-6 py-8">
           <div className="flex justify-between flex-wrap gap-6 items-center">
-            <img src="/logo.png" className="w-16" />
-            <ConnectWallet className="!bg-[#F76A24] !py-5 !px-6 !text-white !uppercase" />
+            <img src="/logo.png" className="w-32" />
+            <ConnectWallet className="!bg-[#b601cc] !py-5 !px-6 !text-black font-bold !uppercase" />
           </div>
         </div>
       </header>
       <div className="container mx-auto px-6 py-16">
         {token && (
-          <>
-            <div className="grid md:grid-cols-4 gap-8  w-full mx-auto">
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+          <div className="flex flex-col items-center justify-center gap-1">
+            <div className="grid md:grid-cols-4 gap-1 w-full mx-auto">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Token Name</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  {/* {token.baseTokenData.name} (${token.baseTokenData.symbol}) */}
-                  Test
+                  {token?.baseTokenData.name} (${token?.baseTokenData.symbol})
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Token Price</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  ${parseFloat(token.priceUsd).toFixed(4)}
+                  ${parseFloat(token?.priceUsd).toFixed(4)}
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Total Supply</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
                   {/* {parseFloat(Number(security?.total_supply))} */}
                   {Number(totalSupply) / 10 ** 18}
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Market Cap</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  ${nFormatter(token.fdv)}
+                  ${nFormatter(token?.fdv)}
                 </div>
               </div>
             </div>
-            <div className="grid md:grid-cols-4 gap-8  w-full mx-auto mt-6">
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+            <div className="grid md:grid-cols-4 gap-1 w-full mx-auto">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Holders</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  {security?.holder_count}
+                  {security?.holder_count || 0}
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">24H Volume</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
                   $
                   {token?.newInformation?.volume24h
-                    ? nFormatter(token.newInformation?.volume24h)
+                    ? nFormatter(token?.newInformation?.volume24h)
                     : 0}
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">24H Price Change</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
                   {token?.newInformation?.priceChange24h
-                    ? parseFloat(token.newInformation.priceChange24h).toFixed(2)
+                    ? parseFloat(token?.newInformation.priceChange24h).toFixed(
+                        2
+                      )
                     : 0}{" "}
                   %
                 </div>
               </div>
-              <div className="bg-white/10 p-4 text-center uppercase rounded-lg">
+              <div className="bg-black/40 p-4 text-center uppercase">
                 <div className="text-lg lg:text-xl">Liquidity</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
-                  ${nFormatter(token.liquidity)}
+                  ${nFormatter(token?.liquidity)}
                 </div>
               </div>
             </div>
-          </>
+          </div>
         )}
 
-        <div className="mt-6 lg:mt-16">
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-16  w-full mx-auto">
-            <div className="bg-[linear-gradient(180deg,#FDA50F_0%,#F76A24_100%)] p-6 text-center uppercase rounded-lg">
+        <div className="mt-6 lg:mt-16 !text-black">
+          <div className="grid md:grid-cols-3 gap-1 lg:gap-1  w-full mx-auto">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Total Burned</div>
               <div className="text-xl lg:text-3xl font-bold mt-2 lg:mt-3">
-                {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))} Test
+                {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))}{" "}
+                {token?.baseTokenData.symbol}
               </div>
             </div>
-            <div className="bg-[linear-gradient(180deg,#FDA50F_0%,#F76A24_100%)] p-6 text-center uppercase rounded-lg">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Total Burned REWARD</div>
               <div className="text-xl lg:text-3xl font-bold mt-1 lg:mt-3">
                 {" "}
@@ -207,11 +209,12 @@ export default function Home() {
                 ETH
               </div>
             </div>
-            <div className="bg-[linear-gradient(180deg,#FDA50F_0%,#F76A24_100%)] p-6 text-center uppercase rounded-lg">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Your Balance</div>
               <div className="text-xl lg:text-3xl font-bold mt-1 lg:mt-3">
                 {" "}
-                {nFormatter(balance?.displayValue)} Test
+                {nFormatter(balance?.displayValue)}{" "}
+                {token?.baseTokenData.symbol}
               </div>
             </div>
           </div>
@@ -222,10 +225,10 @@ export default function Home() {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter Amount of tokens you want to burn"
-              className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#F76A24] rounded-lg"
+              className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#b601cc]"
             />
 
-            {/* <button className="bg-[#F76A24] text-xl hover:bg-[#f75524] py-4 rounded-lg px-6 w-full mt-6">
+            {/* <button className="bg-[#b601cc] text-xl hover:bg-[#f75524] py-4 px-6 w-full mt-6">
               BURN
             </button> */}
             <Web3Button
@@ -236,7 +239,7 @@ export default function Home() {
               onError={({ message, name, stack }) =>
                 toast.error("Something went wrong!")
               }
-              className="!bg-[#F76A24] !text-xl !uppercase !text-white !hover:bg-[#f75524] !py-4 !rounded-lg !px-6 !w-full !mt-6 disabled:!bg-[#792E09]"
+              className="!bg-[#b601cc] !text-xl !uppercase !text-black !hover:bg-[#f75524] !py-4  !px-6 !w-full !mt-6 font-bold disabled:!bg-[#792E09]"
               // Calls the "setName" function on your smart contract with "My Name" as the first argument
               action={() =>
                 mutateAsync({
