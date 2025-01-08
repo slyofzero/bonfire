@@ -113,13 +113,13 @@ export default function Home() {
       <Toaster />
       <img
         src="/bg.jpg"
-        className="fixed object-cover object-top h-full w-full inset-0 z-[-1] brightness-[55%]"
+        className="fixed object-cover object-top h-full w-full inset-0 z-[-1] brightness-75"
       />
       <header>
         <div className="container mx-auto px-6 py-8">
           <div className="flex justify-between flex-wrap gap-6 items-center">
             <img src="/logo.png" className="w-32" />
-            <ConnectWallet className="!bg-[#b601cc] !py-5 !px-6 !text-black font-bold !uppercase" />
+            <ConnectWallet className="!bg-[#cc00b4] !py-5 !px-6 !text-black font-bold !uppercase" />
           </div>
         </div>
       </header>
@@ -192,14 +192,14 @@ export default function Home() {
 
         <div className="mt-6 lg:mt-16 !text-black">
           <div className="grid md:grid-cols-3 gap-1 lg:gap-1  w-full mx-auto">
-            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#990087_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Total Burned</div>
               <div className="text-xl lg:text-3xl font-bold mt-2 lg:mt-3">
                 {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))}{" "}
                 {token?.baseTokenData.symbol}
               </div>
             </div>
-            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#990087_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Total Burned REWARD</div>
               <div className="text-xl lg:text-3xl font-bold mt-1 lg:mt-3">
                 {" "}
@@ -209,7 +209,7 @@ export default function Home() {
                 ETH
               </div>
             </div>
-            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#870099_100%)] p-6 text-center uppercase">
+            <div className="bg-[linear-gradient(180deg,#d02de5_0%,#990087_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Your Balance</div>
               <div className="text-xl lg:text-3xl font-bold mt-1 lg:mt-3">
                 {" "}
@@ -225,10 +225,10 @@ export default function Home() {
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter Amount of tokens you want to burn"
-              className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#b601cc]"
+              className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#cc00b4]"
             />
 
-            {/* <button className="bg-[#b601cc] text-xl hover:bg-[#f75524] py-4 px-6 w-full mt-6">
+            {/* <button className="bg-[#cc00b4] text-xl hover:bg-[#f75524] py-4 px-6 w-full mt-6">
               BURN
             </button> */}
             <Web3Button
@@ -239,7 +239,7 @@ export default function Home() {
               onError={({ message, name, stack }) =>
                 toast.error("Something went wrong!")
               }
-              className="!bg-[#b601cc] !text-xl !uppercase !text-black !hover:bg-[#f75524] !py-4  !px-6 !w-full !mt-6 font-bold disabled:!bg-[#792E09]"
+              className="!bg-[#cc00b4] !text-xl !uppercase !text-black !hover:bg-[#f75524] !py-4  !px-6 !w-full !mt-6 font-bold disabled:!bg-[#792E09]"
               // Calls the "setName" function on your smart contract with "My Name" as the first argument
               action={() =>
                 mutateAsync({
