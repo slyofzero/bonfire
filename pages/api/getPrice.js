@@ -2,7 +2,7 @@ import axios from "axios";
 export default async function handler(req, res) {
   try {
     const resp = await axios.get(
-      "https://api.dexview.com/pair?baseToken=0xF4918b947b7e9819eB813dF276F54AD95D20417a&chainId=1",
+      "https://api.dexview.com/pair?baseToken=&chainId=1",
       {
         headers: {
           secret: "5ff3a258-2700-11ed-a261-0242ac120002",
