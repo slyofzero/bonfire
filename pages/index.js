@@ -23,7 +23,7 @@ export default function Home() {
   let timeout = 1800; // default timeout is 30s
   GoPlus.config(app_key, app_secret, timeout);
 
-  const CONTRACT_ADDRESS = "0xF4918b947b7e9819eB813dF276F54AD95D20417a";
+  const CONTRACT_ADDRESS = "0x16D07efb7bc3A3BdEA09F19EC5fB4178e640E089";
   const [amount, setAmount] = useState(10);
   const [disable, setDisable] = useState({ value: false, message: "" });
   const address = useAddress();
