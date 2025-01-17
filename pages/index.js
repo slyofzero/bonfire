@@ -24,7 +24,7 @@ export default function Home() {
   GoPlus.config(app_key, app_secret, timeout);
 
   const CONTRACT_ADDRESS = "0x8caC6268f1e9e1e2a75776e22E7Cf353B814360d";
-  // const CONTRACT_ADDRESS = "0x16D07efb7bc3A3BdEA09F19EC5fB4178e640E089";
+  const tokenDecimals = 9;
   const [amount, setAmount] = useState(10);
   const [disable, setDisable] = useState({ value: false, message: "" });
   const address = useAddress();
@@ -144,7 +144,7 @@ export default function Home() {
                 <div className="text-lg lg:text-xl">Total Supply</div>
                 <div className="text-xl lg:text-2xl font-bold mt-2 ">
                   {/* {parseFloat(Number(security?.total_supply))} */}
-                  {Number(totalSupply) / 10 ** 18}
+                  {Number(totalSupply) / 10 ** tokenDecimals}
                 </div>
               </div>
               <div className="bg-black/40 p-4 text-center uppercase">
@@ -196,7 +196,9 @@ export default function Home() {
             <div className="bg-[linear-gradient(180deg,#d02de5_0%,#990087_100%)] p-6 text-center uppercase">
               <div className="text-lg lg:text-2xl">Total Burned</div>
               <div className="text-xl lg:text-3xl font-bold mt-2 lg:mt-3">
-                {nFormatter(parseFloat(totalBurned / 10 ** 18).toFixed(2))}{" "}
+                {nFormatter(
+                  parseFloat(totalBurned / 10 ** tokenDecimals).toFixed(2)
+                )}{" "}
                 {token?.baseTokenData.symbol}
               </div>
             </div>
@@ -244,7 +246,7 @@ export default function Home() {
               // Calls the "setName" function on your smart contract with "My Name" as the first argument
               action={() =>
                 mutateAsync({
-                  args: [ethers.utils.parseUnits(amount, 18)],
+                  args: [ethers.utils.parseUnits(amount, tokenDecimals)],
                   overrides: {
                     from: address,
                   },
