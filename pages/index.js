@@ -44,6 +44,7 @@ export default function Home() {
     contract,
     "burnForEth"
   );
+
   const { data: balance } = useBalance(CONTRACT_ADDRESS);
 
   const [token, setToken] = useState(null);
@@ -223,13 +224,22 @@ export default function Home() {
           </div>
 
           <div className="mt-12">
-            <input
-              type="number"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Enter Amount of tokens you want to burn"
-              className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#cc00b4]"
-            />
+            <div className="relative flex items-center">
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="Enter Amount of tokens you want to burn"
+                className="h-20 py-6 text-2xl font-bold bg-[#131313] w-full px-6 uppercase border border-[#cc00b4] text-white"
+              />
+
+              <button
+                onClick={() => setAmount(balance.displayValue)}
+                className="absolute text-white font-bold underline right-16"
+              >
+                Max
+              </button>
+            </div>
 
             {/* <button className="bg-[#cc00b4] text-xl hover:bg-[#f75524] py-4 px-6 w-full mt-6">
               BURN
@@ -239,9 +249,11 @@ export default function Home() {
               contractAddress={CONTRACT_ADDRESS}
               isDisabled={disable.value}
               onSuccess={(e) => toast.success("Successfully Burned")}
-              onError={({ message, name, stack }) =>
-                toast.error("Something went wrong!")
-              }
+              onError={({ message }) => {
+                const match = message.match(/Reason: ([^\n]*)/);
+                if (match) toast.error(match[1]);
+                else toast.error("Something went wrong!");
+              }}
               className="!bg-[#cc00b4] !text-xl !uppercase !text-black !hover:bg-[#f75524] !py-4  !px-6 !w-full !mt-6 font-bold disabled:!bg-[#792E09]"
               // Calls the "setName" function on your smart contract with "My Name" as the first argument
               action={() =>
